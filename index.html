@@ -99,7 +99,7 @@
       display: flex;
       gap: 30px;
       font-family: "DM Mono", monospace;
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -142,7 +142,7 @@
 
     .hero-topline {
       font-family: "DM Mono", monospace;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
 
@@ -184,7 +184,7 @@
       margin-top: 25px;
 
       font-family: "DM Mono", monospace;
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -388,7 +388,7 @@
       margin-top: 35px;
       max-width: 450px;
 
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.8;
 
       color: rgba(247,241,223,0.72);
@@ -462,7 +462,7 @@
 
     .film-description {
       color: rgba(247,241,223,0.72);
-      font-size: 13px;
+      font-size: 15px;
       line-height: 1.8;
       max-width: 500px;
     }
@@ -518,9 +518,13 @@
 }
 
 
-    .project:nth-child(2) {
-      margin-top: 100px;
-    }
+  .project:nth-child(2) {
+  margin-top: 0;
+}
+
+.project:nth-child(4) {
+  margin-top: 0;
+}
 
     .project:hover .project-image {
       transform: rotate(-1deg) scale(1.025);
@@ -628,7 +632,7 @@
       margin-top: 8px;
 
       color: var(--muted);
-      font-size: 13px;
+      font-size: 15px;
       line-height: 1.6;
 
       max-width: 400px;
@@ -669,7 +673,7 @@
 
     .experience-role {
       font-family: "Libre Baskerville", serif;
-      font-size: 25px;
+      font-size: 30px;
     }
 
     .experience-company {
@@ -683,7 +687,7 @@
     }
 
     .experience-description {
-      font-size: 13px;
+      font-size: 15px;
       line-height: 1.8;
       color: var(--muted);
       max-width: 480px;
@@ -775,6 +779,11 @@
       line-height: 1.05;
       font-weight: 400;
     }
+    .about-description {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--muted);
+} 
 
     .about-copy p {
       margin-top: 30px;
@@ -896,10 +905,11 @@
       font-size: 12px;
     }
 
-    .phone {
+    .linktree {
       font-family: "DM Mono", monospace;
       font-size: 12px;
-    }
+    
+}
 
     .contact-meta {
       font-family: "DM Mono", monospace;
@@ -1055,7 +1065,7 @@
     </p>
 
     <div class="hero-location">
-      University of Arkansas · Walton College · Class of 2027
+      University of Arkansas * Walton College * Class of 2027 * 
     </div>
 
 
@@ -1544,7 +1554,7 @@
           <em>somewhere new.</em>
         </h2>
 
-        <p>
+        <p class="about-description">
           In 2024, I spent a semester studying in Florence, Italy.
           Living somewhere completely different taught me a lot
           about adapting, communicating, and being willing to
@@ -1716,12 +1726,15 @@
       >
         brooke4leininger4@gmail.com
       </a>
+      <br> 
 
-      <a
-        class="phone"
-        href="tel:+1-870-404-1788"
-      >
-        +1 (870) 404-1788
+      <a 
+        class="linktree"
+        href="https://linktr.ee/brookeleininger"
+        target="_blank"
+        rel="noopener noreferrer"
+        > 
+        Linktree
       </a>
 
       <div class="contact-meta">
