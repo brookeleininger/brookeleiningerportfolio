@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Brooke Leininger — Information Systems & Emerging Technology</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================================================
+       COLOR PALETTE
+       ========================================================= */
+
+    :root {
+      --driftwood: #e8dfc9;
+      --paper: #f3eddc;
+      --cream: #f7f1df;
+
+      --hoh-moss: #778064;
+      --lake-crescent: #6e8d89;
+      --foggy-peaks: #a8b2ad;
+
+      --quinault-fern: #455444;
+      --rialto-forest: #26372e;
+
+      --ink: #202722;
+      --muted: #5f675f;
+
+      --line: rgba(38, 55, 46, 0.25);
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--driftwood);
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 22px 5vw;
+
+      mix-blend-mode: multiply;
+    }
+
+    .nav-logo {
+      font-family: "DM Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background: var(--rialto-forest);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 5vw 70px;
+
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-topline {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      margin-bottom: 30px;
+
+      color: var(--quinault-fern);
+    }
+
+    .hero-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(55px, 10vw, 145px);
+      line-height: 0.88;
+      font-weight: 400;
+
+      max-width: 1100px;
+
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-title em {
+      color: var(--quinault-fern);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      width: min(450px, 80%);
+      margin-top: 45px;
+
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-location {
+      margin-top: 25px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       PHOTO COLLAGE
+       ========================================================= */
+
+    .photo-collage {
+      position: absolute;
+      right: 4vw;
+      top: 18%;
+      width: 40vw;
+      height: 62vh;
+      max-width: 600px;
+
+      pointer-events: none;
+    }
+
+    .photo {
+      position: absolute;
+      overflow: hidden;
+
+      box-shadow: 0 15px 35px rgba(38, 55, 46, 0.15);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.08),
+          rgba(38,55,46,0.18)
+        );
+
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .photo-1 {
+      width: 55%;
+      height: 58%;
+      right: 4%;
+      top: 4%;
+
+      transform: rotate(4deg);
+
+      background:
+        linear-gradient(
+          145deg,
+          #82958d,
+          #3f5a4a
+        );
+    }
+
+    .photo-2 {
+      width: 48%;
+      height: 52%;
+      left: 3%;
+      top: 20%;
+
+      transform: rotate(-6deg);
+
+      background:
+        linear-gradient(
+          160deg,
+          #a7b2a8,
+          #5c7566
+        );
+    }
+
+    .photo-3 {
+      width: 45%;
+      height: 46%;
+      right: 23%;
+      bottom: 3%;
+
+      transform: rotate(2deg);
+
+      background:
+        linear-gradient(
+          150deg,
+          #c4c9b7,
+          #63796c
+        );
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+
+      z-index: 3;
+
+      color: white;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+
+
+    /* =========================================================
+       SCROLL INDICATOR
+       ========================================================= */
+
+    .scroll-note {
+      position: absolute;
+      bottom: 35px;
+      left: 5vw;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-line {
+      width: 55px;
+      height: 1px;
+      background: var(--rialto-forest);
+    }
+
+
+    /* =========================================================
+       SECTION BASE
+       ========================================================= */
+
+    section {
+      position: relative;
+      padding: 130px 5vw;
+    }
+
+    .section-label {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      color: var(--quinault-fern);
+
+      margin-bottom: 25px;
+    }
+
+    .section-heading {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(38px, 6vw, 80px);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+
+    /* =========================================================
+       INTRO
+       ========================================================= */
+
+    .intro {
+      background: var(--rialto-forest);
+      color: var(--cream);
+
+      min-height: 75vh;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8vw;
+      align-items: center;
+    }
+
+    .intro .section-label {
+      color: var(--foggy-peaks);
+    }
+
+    .intro-text {
+      max-width: 560px;
+
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(25px, 3vw, 42px);
+      line-height: 1.35;
+    }
+
+    .intro-text em {
+      color: var(--foggy-peaks);
+    }
+
+    .intro-small {
+      margin-top: 35px;
+      max-width: 450px;
+
+      font-size: 14px;
+      line-height: 1.8;
+
+      color: rgba(247,241,223,0.72);
+    }
+
+
+    /* =========================================================
+       FILM STRIP
+       ========================================================= */
+
+    .work {
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .film-wrapper {
+      margin-top: 70px;
+      margin-left: -5vw;
+      margin-right: -5vw;
+    }
+
+    .film-strip {
+      background: var(--rialto-forest);
+      padding: 24px 5vw 30px;
+
+      position: relative;
+
+      transform: rotate(-1deg);
+      width: 110%;
+      margin-left: -5%;
+    }
+
+    .film-holes {
+      height: 15px;
+      margin-bottom: 18px;
+
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          var(--cream) 0px,
+          var(--cream) 9px,
+          transparent 9px,
+          transparent 18px
+        );
+
+      opacity: 0.85;
+    }
+
+    .film-content {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 45px;
+
+      align-items: center;
+    }
+
+    .film-number {
+      font-family: "DM Mono", monospace;
+      color: var(--foggy-peaks);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .film-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(30px, 5vw, 70px);
+      color: var(--cream);
+      margin-top: 12px;
+      line-height: 1;
+    }
+
+    .film-description {
+      color: rgba(247,241,223,0.72);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    .film-link {
+      display: inline-block;
+      margin-top: 25px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      color: var(--cream);
+
+      border-bottom: 1px solid rgba(247,241,223,0.5);
+
+      padding-bottom: 6px;
+    }
+
+    .film-holes.bottom {
+      margin-top: 22px;
+      margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
+
+    .projects {
+      margin-top: 90px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 70px 50px;
+    }
+
+    .project {
+      position: relative;
+    }
+
+    .project-image {
+  height: 400px;
+
+  position: relative;
+  overflow: hidden;
+
+  background: var(--foggy-peaks);
+
+  transition:
+    transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+
+
+    .project:nth-child(2) {
+      margin-top: 100px;
+    }
+
+    .project:hover .project-image {
+      transform: rotate(-1deg) scale(1.025);
+    }
+
+    .project-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(69,84,68,0.15),
+          rgba(38,55,46,0.4)
+        );
+    }
+
+    .project-image.one {
+      background:
+        linear-gradient(
+          150deg,
+          #76918a,
+          #344a3e
+        );
+    }
+    .project-image.one img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+    .project-image.two {
+      background:
+        linear-gradient(
+          135deg,
+          #b4b9aa,
+          #66786e
+        );
+    }
+
+     .project-image.two img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+    .project-image.four {
+      background:
+        linear-gradient(
+          145deg,
+          #82928b,
+          #384c40
+        );
+    }
+
+    .project-image.four img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+    }
+
+    .project-image.three img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+    .image-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+
+      z-index: 3;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      color: white;
+      letter-spacing: 0.08em;
+    }
+
+    .project-info {
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .project-number {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .project-name {
+      font-family: "Libre Baskerville", serif;
+      font-size: 26px;
+    }
+
+    .project-description {
+      margin-top: 8px;
+
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+
+      max-width: 400px;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+       ========================================================= */
+
+    .experience {
+      background: var(--cream);
+    }
+
+    .experience-grid {
+      margin-top: 75px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr;
+      padding: 35px 0;
+
+      border-top: 1px solid var(--line);
+
+      transition: padding 0.3s ease;
+    }
+
+    .experience-item:hover {
+      padding-left: 15px;
+    }
+
+    .experience-year {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .experience-role {
+      font-family: "Libre Baskerville", serif;
+      font-size: 25px;
+    }
+
+    .experience-company {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--quinault-fern);
+
+      margin-top: 8px;
+    }
+
+    .experience-description {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+
+    /* =========================================================
+       FLORENCE / ABOUT
+       ========================================================= */
+
+    .about {
+      background: var(--hoh-moss);
+      color: var(--cream);
+
+      min-height: 90vh;
+    }
+
+    .about .section-label {
+      color: var(--cream);
+      opacity: 0.65;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 8vw;
+      align-items: center;
+    }
+
+    .florence-card {
+      position: relative;
+      height: 570px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          #d6c8a5,
+          #617260
+        );
+
+      transform: rotate(-3deg);
+
+      box-shadow: 20px 25px 0 rgba(38,55,46,0.2);
+    }
+
+    .florence-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .florence-card::before {
+      content: "FLORENCE / 2024";
+
+      position: absolute;
+      left: 25px;
+      bottom: 25px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    .florence-card::after {
+      content: "";
+
+      position: absolute;
+      inset: 15px;
+
+      border: 1px solid rgba(255,255,255,0.4);
+
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .about-copy {
+      max-width: 530px;
+    }
+
+    .about-heading {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(35px, 5vw, 70px);
+      line-height: 1.05;
+      font-weight: 400;
+    }
+
+    .about-copy p {
+      margin-top: 30px;
+
+      font-size: 14px;
+      line-height: 1.9;
+
+      color: rgba(247,241,223,0.82);
+    }
+
+    .passport {
+      margin-top: 45px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      border-top: 1px solid rgba(247,241,223,0.3);
+    }
+
+    .passport-item {
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(247,241,223,0.3);
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.07em;
+    }
+
+
+    /* =========================================================
+       SKILLS
+       ========================================================= */
+
+    .skills {
+      background: var(--driftwood);
+    }
+
+    .skills-grid {
+      margin-top: 80px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-group {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+    }
+
+    .skill-group:nth-child(odd) {
+      padding-right: 50px;
+    }
+
+    .skill-group:nth-child(even) {
+      padding-left: 50px;
+      border-left: 1px solid var(--line);
+    }
+
+    .skill-category {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--quinault-fern);
+    }
+
+    .skill-list {
+      font-family: "Libre Baskerville", serif;
+      font-size: 24px;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
+
+    .contact {
+      min-height: 75vh;
+
+      background: var(--rialto-forest);
+      color: var(--cream);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact .section-label {
+      color: var(--foggy-peaks);
+    }
+
+    .contact-heading {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(55px, 9vw, 130px);
+      line-height: 0.9;
+      font-weight: 400;
+      max-width: 1000px;
+    }
+
+    .contact-heading em {
+      color: var(--foggy-peaks);
+    }
+
+    .contact-bottom {
+      margin-top: 100px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      border-top: 1px solid rgba(247,241,223,0.25);
+      padding-top: 25px;
+    }
+
+    .email {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+    }
+
+    .phone {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+    }
+
+    .contact-meta {
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      line-height: 2;
+      text-align: right;
+      color: rgba(247,241,223,0.55);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 18px 5vw;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 120px;
+        min-height: 900px;
+      }
+
+      .hero-title {
+        font-size: 62px;
+      }
+
+      .photo-collage {
+        top: 50%;
+        right: -10%;
+        width: 90vw;
+        height: 45vh;
+
+        opacity: 0.75;
+      }
+
+      .intro,
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        min-height: auto;
+      }
+
+      .film-content {
+        grid-template-columns: 1fr;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .project:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .project-image {
+        height: 350px;
+      }
+
+      .experience-item {
+        grid-template-columns: 70px 1fr;
+        gap: 10px;
+      }
+
+      .experience-description {
+        grid-column: 2;
+      }
+
+      .florence-card {
+        height: 450px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-group:nth-child(even) {
+        padding-left: 0;
+        border-left: none;
+      }
+
+      .skill-group:nth-child(odd) {
+        padding-right: 0;
+      }
+
+      .contact-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+      }
+
+      .contact-meta {
+        text-align: left;
+      }
+
+    }
+  
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
+
+  <nav>
+
+    <a href="#" class="nav-logo">
+      BL / 26
+    </a>
+
+    <div class="nav-links">
+  <a href="#work">Work</a>
+  <a href="#experience">Experience</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="Brooke%20Leininger%20Resume%20(4).pdf" target="_blank">Resume</a>
+</div>
+
+  </nav>
+
+
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+
+  <header class="hero">
+
+    <div class="hero-topline">
+      * Information Systems * Emerging Technology * Analytics *
+    </div>
+
+    <h1 class="hero-title">
+      Brooke<br>
+      <em>Leininger.</em>
+    </h1>
+
+    <p class="hero-description">
+      I’m looking for opportunities to learn something new, build something meaningful, and see where an idea can go.
+    </p>
+
+    <div class="hero-location">
+      University of Arkansas · Walton College · Class of 2027
+    </div>
+
+
+    <!-- PHOTO COLLAGE -->
+
+    <div class="photo-collage">
+
+      <div class="photo photo-1">
+        <img src="switz.jpeg" alt="New York City">
+        <span class="photo-label">01 / CURRENTLY</span>
+      </div>
+
+      <div class="photo photo-2">
+      <img src="nycphoto.jpeg" alt="Switzerland">
+      </div>
+
+      <div class="photo photo-3">
+      <img src="boss.jpeg" alt="Puerto Rico">
+      </div>
+
+    </div>
+
+
+    <div class="scroll-note">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================================================
+       INTRO
+       ========================================================= -->
+
+  <section class="intro">
+
+    <div>
+
+      <div class="section-label">
+        INTRO/ 001
+      </div>
+
+      <div class="section-heading">
+        <em> Projects, experiences</em><br>
+        <em>and a few things</em><br>
+        <em>in between.</em>
+  
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <p class="intro-text">
+        I'm studying Information Systems with a concentration 
+        in Emerging Technology
+        at the University of Arkansas, with a minor in Accounting.
+      </p>
+
+      <p class="intro-small">
+        My work has taken me from IT support and website analytics
+        to SEO, digital content, data, and ideas that started as
+        “what if?” questions.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       WORK
+       ========================================================= -->
+
+  <section class="work" id="work">
+
+    <div class="section-label">
+      Selected work / 002
+    </div>
+
+    <h2 class="section-heading">
+      Things I've<br>
+      been working on.
+    </h2>
+
+
+    <div class="film-wrapper">
+
+      <div class="film-strip">
+
+        <div class="film-holes"></div>
+
+        <div class="film-content">
+
+          <div>
+
+            <div class="film-number">
+              PROJECT 01 / 2026
+            </div>
+
+            <h3 class="film-title">
+              Website SEO<br>
+              Audits
+            </h3>
+
+          </div>
+
+          <div>
+
+            <p class="film-description">
+              Auditing websites using Screaming Frog to identify
+               technical SEO issues, broken links, missing metadata,
+                accessibility concerns, and opportunities to improve 
+                search visibility. I clean and analyze crawl data in 
+                Excel, investigate individual issues, and use the 
+                findings to better understand how website structure 
+                affects search and user experience.<br>
+                <br>  
+                <em> Screaming Frog *  Excel *  Google Search Console  * 
+                 AI Seach Engines *  ModernCampus</em>
+            </p>
+
+            
+
+          </div>
+
+        </div>
+
+        <div class="film-holes bottom"></div>
+
+      </div>
+
+    </div>
+
+     <div class="film-wrapper">
+
+      <div class="film-strip">
+
+        <div class="film-holes"></div>
+
+        <div class="film-content">
+
+          <div>
+
+            <div class="film-number">
+              PROJECT 02 / 2026
+            </div>
+
+            <h3 class="film-title">
+              Porchlight Post. <br>
+            </h3>
+
+          </div>
+
+          <div>
+
+            <p class="film-description">
+              A subscription service currently in development, 
+              created with connection and older adults in mind. 
+              I’m working through the concept, branding, design, 
+              and experience behind it, with more details to come.
+<br>
+                <br>  
+                <em> Business Concept *  Product Development</em>
+            </p>
+
+            
+
+          </div>
+
+        </div>
+
+        <div class="film-holes bottom"></div>
+
+      </div>
+
+    </div>
+
+    <div class="projects">
+ 
+
+      <!-- PROJECT 1 -->
+
+      <article class="project">
+
+        <div class="project-image one">
+       <img src="google.png" alt="Google">
+       </div>
+       
+
+        <div class="project-info">
+
+          <div>
+
+            <div class="project-number">
+              01
+            </div>
+
+            <div class="project-name">
+              Data & Analytics
+            </div>
+
+            <p class="project-description">
+              Using Google Analytics, Google Search Console, 
+              and Google Ads Manager to understand website 
+              traffic, search performance, user behavior, 
+              and how people discover Walton College content. 
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT 2 -->
+
+      <article class="project">
+
+        <div class="project-image two">
+          <img src="global2.jpeg" alt="Accessibility and User Experience">
+          <span class="image-caption">
+          </span>
+        </div>
+
+        <div class="project-info">
+
+          <div>
+
+            <div class="project-number">
+              02
+            </div>
+
+            <div class="project-name">
+              Accessibility & User Experience
+            </div>
+
+            <p class="project-description">
+              Using Microsoft Clarity to monitor AI citations and share of voice across websites, while using
+               Ally to evaluate overall accessibility,including files, images, and webpage content.
+              <br>
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- PROJECT 3 -->
+
+      <article class="project">
+
+        <div class="project-image three">
+           <img src="brain.jpeg" alt="AI Image">
+        </div>
+
+        <div class="project-info">
+
+          <div>
+
+            <div class="project-number">
+              03
+            </div>
+
+            <div class="project-name">
+              Search × AI
+            </div>
+
+            <p class="project-description">
+              Exploring how technical SEO, analytics, and
+              emerging AI-driven search environments are
+              changing how people discover information.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT 4 -->
+
+      <article class="project">
+
+        <div class="project-image four">
+          <img src="lightbulb.jpeg" alt="AI Image">
+        </div>
+
+        <div class="project-info">
+
+          <div>
+
+            <div class="project-number">
+              05
+            </div>
+
+            <div class="project-name">
+              Ideas in Progress
+            </div>
+
+            <p class="project-description">
+              Business concepts, digital products, and ideas
+              that started with a question and turned into
+              something worth exploring.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       EXPERIENCE
+       ========================================================= -->
+
+  <section class="experience" id="experience">
+
+    <div class="section-label">
+      Experience / 003
+    </div>
+
+    <h2 class="section-heading">
+      Where I've<br>
+      been learning.
+    </h2>
+
+
+    <div class="experience-grid">
+
+
+      <div class="experience-item">
+
+        <div class="experience-year">
+          May 2026 — Present
+        </div>
+
+        <div>
+
+          <div class="experience-role">
+            IT Support Intern
+          </div>
+
+          <div class="experience-company">
+            City of Fayetteville
+          </div>
+
+        </div>
+
+        <div class="experience-description">
+          Providing first-level IT support to city staff, work order documentation,
+          inventory management, computer deployments, and
+          end-user support.
+        </div>
+
+      </div>
+
+
+      <div class="experience-item">
+
+        <div class="experience-year">
+          Jan 2026 — Present
+        </div>
+
+        <div>
+
+          <div class="experience-role">
+            Web SEO Intern
+          </div>
+
+          <div class="experience-company">
+            Walton College of Business
+          </div>
+
+        </div>
+
+        <div class="experience-description">
+          Technical SEO audits, website analytics, content
+          optimization, metadata, internal linking, accessibility,
+          and emerging AI-driven search environments.
+        </div>
+
+      </div>
+
+
+      <div class="experience-item">
+
+        <div class="experience-year">
+          2025
+        </div>
+
+        <div>
+
+          <div class="experience-role">
+            Digital Content Analyst
+          </div>
+
+          <div class="experience-company">
+            Digital Content Partner
+          </div>
+
+        </div>
+
+        <div class="experience-description">
+          Optimized e-commerce content and maintained digital
+          product data to improve discoverability, accuracy,
+          and organic ranking.
+        </div>
+
+      </div>
+
+
+      <div class="experience-item">
+
+        <div class="experience-year">
+          2025
+        </div>
+
+        <div>
+
+          <div class="experience-role">
+            Server
+          </div>
+
+          <div class="experience-company">
+            Big Creek Country Club
+          </div>
+
+        </div>
+
+        <div class="experience-description">
+          Delivered high-quality customer service in a fast-paced
+          environment. Maintained accurate inventory of food and
+          beverage supplies.
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       ABOUT / FLORENCE
+       ========================================================= -->
+
+  <section class="about" id="about">
+
+    <div class="about-layout">
+
+
+      <div>
+
+        <div class="florence-card">
+          <img src="florence.jpeg" alt="Florence, Italy">
+        </div>
+
+      </div>
+
+
+      <div class="about-copy">
+
+        <div class="section-label">
+          About / 004
+        </div>
+
+        <h2 class="about-heading">
+          Somewhere between
+          technology and
+          <em>somewhere new.</em>
+        </h2>
+
+        <p>
+          In 2024, I spent a semester studying in Florence, Italy.
+          Living somewhere completely different taught me a lot
+          about adapting, communicating, and being willing to
+          figure things out as I went.
+        </p>
+
+        <p>
+          That same curiosity follows me into my work. I don't
+          necessarily want to stay inside one box. I'm interested
+          in technology, business, data, international experiences,
+          and building things that solve real problems.
+        </p>
+
+
+        <div class="passport">
+
+          <div class="passport-item">
+            UARK / WALTON COLLEGE
+          </div>
+
+          <div class="passport-item">
+            WALTON HONORS
+          </div>
+
+          <div class="passport-item">
+            INFORMATION SYSTEMS
+          </div>
+
+          <div class="passport-item">
+            EMERGING TECHNOLOGY
+          </div>
+
+          <div class="passport-item">
+            ACCOUNTING MINOR
+          </div>
+
+          <div class="passport-item">
+            FLORENCE / 2024
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       SKILLS
+       ========================================================= -->
+
+  <section class="skills">
+
+    <div class="section-label">
+      Toolkit / 005
+    </div>
+
+    <h2 class="section-heading">
+      Things I<br>
+      know how to use.
+    </h2>
+
+
+    <div class="skills-grid">
+
+
+      <div class="skill-group">
+
+        <div class="skill-category">
+          Systems
+        </div>
+
+        <div class="skill-list">
+          * SQL, C#<br>
+          * Microsoft Access & 365<br>
+          * Alteryx<br>
+          * ManageEngine
+        </div>
+
+      </div>
+
+
+      <div class="skill-group">
+
+        <div class="skill-category">
+          Data
+        </div>
+
+        <div class="skill-list">
+          * Tableau<br>
+          * Google Analytics<br>
+          * SAS Viya<br>
+          * Excel (Advanced)<br>  
+          * SAS Enterprise Miner
+        </div>
+
+      </div>
+
+
+      <div class="skill-group">
+
+        <div class="skill-category">
+          Web
+        </div>
+
+        <div class="skill-list">
+          * ModernCampus<br>
+          * Screaming Frog<br>
+          * Google Search Console<br>
+          * HTML / CSS  <br>  
+          * Microsoft Clarity
+        </div>
+
+      </div>
+
+
+      <div class="skill-group">
+
+        <div class="skill-category">
+          Business
+        </div>
+
+        <div class="skill-list">
+          * Accounting<br>
+          * Financial Analysis<br>
+          * Digital Content<br> 
+          * Customer Service<br>
+          * Entrepreneurship
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       CONTACT
+       ========================================================= -->
+
+  <section class="contact" id="contact">
+
+    <div>
+
+      <div class="section-label">
+        Contact / 006
+      </div>
+
+      <h2 class="contact-heading">
+        Let's see<br>
+        where this<br>
+        <em>goes.</em>
+      </h2>
+
+    </div>
+
+
+    <div class="contact-bottom">
+
+      <a
+        class="email"
+        href="mailto:brooke4leininger4@gmail.com"
+      >
+        brooke4leininger4@gmail.com
+      </a>
+
+      <a
+        class="phone"
+        href="tel:+1-870-404-1788"
+      >
+        +1 (870) 404-1788
+      </a>
+
+      <div class="contact-meta">
+        BROOKE LEININGER<br>
+        FAYETTEVILLE, AR<br>
+        INFORMATION SYSTEMS / 2027
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+
+    /* Slight parallax movement for the collage */
+
+    const collage = document.querySelector(".photo-collage");
+
+    window.addEventListener("scroll", () => {
+
+      if (!collage) return;
+
+      const scroll = window.scrollY;
+
+      collage.style.transform =
+        `translateY(${scroll * 0.08}px)`;
+
+    });
+
+
+    /* Make nav slightly more subtle after scrolling */
+
+    const nav = document.querySelector("nav");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+        nav.style.opacity = "0.82";
+      } else {
+        nav.style.opacity = "1";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
